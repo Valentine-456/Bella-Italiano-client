@@ -1,6 +1,6 @@
 <template>
   <div id="menuGroup">
-    <h3>{{title}}</h3>
+    <h2 :id="title">{{title}}</h2>
     <b-card-group deck>
       <MenuItem title="asdf" buttonText="45 $">jmhgfsda</MenuItem>
       <MenuItem
@@ -28,6 +28,7 @@ export default {
 <style scoped>
 #menuGroup {
   background-color: whitesmoke;
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 0;
 }
 </style>

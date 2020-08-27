@@ -40,15 +40,22 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .menu-item {
   width: 20rem;
   min-height: 40vh;
 }
 
+@media screen and(max-width: 900px) {
+  .menu-item {
+    width: 34%;
+    min-height: 40vh;
+  }
+}
 @media screen and (max-width: 425px) {
   .menu-item {
-    width: 18rem;
+    width: 16rem;
   }
 }
 </style>
