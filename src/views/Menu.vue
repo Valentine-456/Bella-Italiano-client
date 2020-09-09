@@ -1,10 +1,8 @@
 <template>
   <div id="wrapper">
-    <MenuMini id='menu-sidebar'/>
+    <MenuMini id="menu-sidebar" />
     <b-container id="menu" class="ml-auto d-flex flex-column flex-start" fluid="lg">
-      <MenuGroup title="Pasta"></MenuGroup>
-      <MenuGroup title="Pizza"></MenuGroup>
-      <MenuGroup title="Soups"></MenuGroup>
+      <MenuGroup></MenuGroup>
     </b-container>
   </div>
 </template>
@@ -24,8 +22,8 @@ export default {
 <style scoped>
 #wrapper {
   display: flex;
-    width: 100%;
-    flex-direction: column;
+  width: 100%;
+  flex-direction: column;
   align-content: flex-start;
 }
 

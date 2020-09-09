@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <b-container id='about' fluid="lg" >
     <Map />
-  </div>
+  </b-container>
 </template>
 <script>
 import Map from "../components/About/Map";
@@ -13,4 +13,7 @@ export default {
 };
 </script>
 <style scoped>
+#about {
+  padding: 0;
+}
 </style>

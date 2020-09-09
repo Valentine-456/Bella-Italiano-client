@@ -1,7 +1,7 @@
 <template>
   <div id="navbar">
     <b-navbar variant="warning">
-      <b-navbar-brand tag="h1" class="mb-0">Bello Italiano</b-navbar-brand>
+      <b-navbar-brand tag="h1" class="mb-0">Bella Italiano</b-navbar-brand>
       <b-nav tag="nav" pills justify>
         <b-nav-item to="/menu">Menu</b-nav-item>
         <b-nav-item to="/about">About</b-nav-item>
@@ -18,11 +18,6 @@ export default {
 };
 </script>
 <style scoped>
-*::selection {
-  background-color: rgba(24, 24, 24, 0.7);
-  color: darkgrey;
-}
-
 * {
   font-family: "Italiana", sans-serif;
   font-size: 1.75rem;

@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar></Navbar>
     <router-view></router-view>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -33,6 +33,11 @@ body {
   padding: 0;
   width: 100%;
   box-sizing: border-box;
+}
+
+*::selection {
+  background-color: rgba(24, 24, 24, 0.7);
+  color: darkgrey;
 }
 /* #nav {
   padding: 30px;

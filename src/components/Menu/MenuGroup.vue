@@ -1,32 +1,33 @@
 <template>
-  <div id="menuGroup">
-    <h2 :id="title">{{title}}</h2>
+  <div class="menuGroup">
+    <h2>{{menuSection}}</h2>
     <b-card-group deck>
-      <MenuItem title="asdf" buttonText="45 $">jmhgfsda</MenuItem>
       <MenuItem
-        title="dfghj"
-        buttonText="54 $"
-      >LKJHGDFSHJKUGFDSFGHJHJAGVJJFAS;;;;;;;RHF8IOH YHIUO TYUHUYF CTGHJKEGBSFDADCZVF</MenuItem>
-      <MenuItem title="asdfdgh" buttonText="13 $"></MenuItem>
-      <MenuItem buttonText="More..."></MenuItem>
+        v-for="(dish, index) in menu"
+        :key="index + 1"
+        :title="dish.name"
+        :buttonText="dish.price + ' '"
+        :img="dish.photo"
+      ></MenuItem>
     </b-card-group>
   </div>
 </template>
 <script>
 import MenuItem from "./MenuItem";
+import { mapGetters } from "vuex";
 
 export default {
   name: "MenuGroup",
+  computed: {
+    ...mapGetters("menu", ["menu", "menuSection"])
+  },
   components: {
     MenuItem
-  },
-  props: {
-    title: String
   }
 };
 </script>
 <style scoped>
-#menuGroup {
+.menuGroup {
   background-color: whitesmoke;
   padding-top: 20px;
   padding-left: 0;

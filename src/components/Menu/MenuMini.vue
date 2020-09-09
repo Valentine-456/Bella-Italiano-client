@@ -11,23 +11,49 @@
       backdrop
     >
       <template v-slot:default="{ hide }">
-        <div class="d-flex  flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center">
           <b-row>
-            <b-button class='menu-mini-section' variant="warning" @click="hide" size="lg">
+            <b-button
+              class="menu-mini-section"
+              variant="warning"
+              @click="chooseMenu('wines', hide)"
+              size="lg"
+            >
               Wine card
               <img src="../../assets/wine-bottle.svg" />
             </b-button>
           </b-row>
           <b-row>
-            <b-button class='menu-mini-section' variant="warning" @click="hide" size="lg">
-              Italian cuisine
+            <b-button
+              class="menu-mini-section"
+              variant="warning"
+              @click=" chooseMenu('pasta', hide)"
+              size="lg"
+            >
+              Pasta
               <img src="../../assets/pasta.svg" />
             </b-button>
           </b-row>
           <b-row>
-            <b-button class='menu-mini-section' variant="warning" @click="hide" size="lg">
-              Children menu
-              <img src="../../assets/doll.svg" />
+            <b-button
+              class="menu-mini-section"
+              variant="warning"
+              @click="chooseMenu('pizza', hide)"
+              size="lg"
+            >
+              Pizza
+              <img src="../../assets/pizza.svg" />
+            </b-button>
+          </b-row>
+          <b-row>
+            <b-button
+              class="menu-mini-section"
+              variant="warning"
+              @click="chooseMenu('seafood', hide)"
+              size="lg"
+            >
+              Seafood
+              <img src="../../assets/seafood.svg" />
             </b-button>
           </b-row>
         </div>
@@ -36,8 +62,17 @@
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+
 export default {
-  name: "MenuMini"
+  name: "MenuMini",
+  methods: {
+    ...mapActions("menu", ["getMenu"]),
+    chooseMenu(foodType, hide) {
+      this.getMenu(foodType);
+      hide();
+    }
+  }
 };
 </script>
 <style scoped>
