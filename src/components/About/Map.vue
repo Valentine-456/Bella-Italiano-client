@@ -30,10 +30,8 @@ export default {
         el.className = "marker";
         el.style.width = "50px";
         el.style.height = "50px";
-        // el.style.backgroundImage =
-        //   "url('https://cdn2.iconfinder.com/data/icons/restaurant-elements-v-02-1/64/fast_food_restaurant_element_shop_store_location_pin_map_pizza-512.png')";
         el.style.backgroundImage =
-          "url('https://www.flaticon.com/svg/static/icons/svg/1627/1627867.svg')";
+          "url('/gallery/mapPin.svg')";
         el.style.backgroundSize = "cover";
 
         // Adds a marker
@@ -69,11 +67,6 @@ export default {
         setTimeout(() => this.initMap());
       }
     }
-  },
-  created: function() {
-    document.addEventListener("DOMContentLoaded", () => {
-      this.initMap();
-    });
   },
   mounted: function() {
     this.initMap();

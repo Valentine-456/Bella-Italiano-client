@@ -20,7 +20,7 @@
               size="lg"
             >
               Wine card
-              <img src="../../assets/wine-bottle.svg" />
+              <img src="/gallery/wine-bottle.svg" />
             </b-button>
           </b-row>
           <b-row>
@@ -31,7 +31,7 @@
               size="lg"
             >
               Pasta
-              <img src="../../assets/pasta.svg" />
+              <img src="/gallery/pasta.svg" />
             </b-button>
           </b-row>
           <b-row>
@@ -42,7 +42,7 @@
               size="lg"
             >
               Pizza
-              <img src="../../assets/pizza.svg" />
+              <img src="/gallery/pizza.svg" />
             </b-button>
           </b-row>
           <b-row>
@@ -53,7 +53,7 @@
               size="lg"
             >
               Seafood
-              <img src="../../assets/seafood.svg" />
+              <img src="/gallery/seafood.svg" />
             </b-button>
           </b-row>
         </div>
