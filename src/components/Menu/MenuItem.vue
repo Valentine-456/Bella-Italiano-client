@@ -12,10 +12,14 @@
       <!-- <slot></slot> -->
       <!-- </b-tooltip> -->
       <div class="card-img-top">
+        <div v-if="colorSticker || typeSticker" class="card-stickers">
+          <div v-if="colorSticker" :class="[colorSticker, 'sticker']"></div>
+          <div v-if="typeSticker" :class="[typeSticker, 'sticker']"></div>
+        </div>
         <div class="img" :style="photoBackground"></div>
       </div>
       <h4 class="card-title">{{title}}</h4>
-      <b-button class='price-button' pill href="#" variant="warning">
+      <b-button class="price-button" pill href="#" variant="warning">
         {{
         priceInCurrency
         }}
@@ -40,6 +44,12 @@ export default {
       type: String,
       default:
         "https://urbandojo.com/wp-content/uploads/2017/04/default-image.jpg"
+    },
+    color: {
+      type: String
+    },
+    type: {
+      type: String
     }
   },
   computed: {
@@ -47,11 +57,24 @@ export default {
       return `background-image: url('${this.img}');`;
     },
     priceInCurrency: function() {
-      return new Intl.NumberFormat("ru", {
+      return new Intl.NumberFormat("ua", {
         style: "currency",
-        currency: "EUR",
+        currency: "UAH",
         minimumFractionDigits: 2
       }).format(+this.buttonText);
+    },
+    colorSticker: function() {
+      if (this.color === "white") return `sticker-white`;
+      if (this.color === "red") return `sticker-red`;
+      if (this.color === "pink") return `sticker-pink`;
+      return "";
+    },
+    typeSticker: function() {
+      if (this.type === "sweet") return `sticker-sweet`;
+      if (this.type === "dry") return `sticker-dry`;
+      if (this.type === "sparkling") return `sticker-sparkling`;
+      // "../../assets/seafood.svg"
+      return "";
     }
   }
 };
@@ -63,9 +86,7 @@ export default {
   min-height: 40vh;
 }
 .card-img-top {
-  /* width: 100%;
-  margin: 0;
-  height: 320px; */
+  position: relative;
   background-color: white;
 }
 .img {
@@ -74,6 +95,44 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.card-stickers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+.sticker {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  background-size: contain;
+  margin-bottom: 10px;
+  /* border: 3px solid #343A40; */
+}
+
+.sticker-red {
+  background-image: url("../../assets/grapeRed.svg");
+}
+.sticker-white {
+  background-image: url("../../assets/grapeWhite.svg");
+}
+.sticker-pink {
+  background-image: url("../../assets/grapePink.svg");
+}
+.sticker-sweet {
+  background-image: url("../../assets/wineSweet.svg");
+}
+.sticker-dry {
+  background-image: url("../../assets/wineDry.svg");
+}
+.sticker-sparkling {
+  background-image: url("../../assets/wineSparkling.svg");
 }
 
 .card-body {

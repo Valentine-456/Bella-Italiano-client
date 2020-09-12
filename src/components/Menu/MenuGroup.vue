@@ -6,8 +6,10 @@
         v-for="(dish, index) in menu"
         :key="index + 1"
         :title="dish.name"
-        :buttonText="dish.price + ' '"
+        :buttonText="dish.priceUAH + ' '"
         :img="dish.photo"
+        :color="dish.color"
+        :type="dish.type"
       ></MenuItem>
     </b-card-group>
   </div>

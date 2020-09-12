@@ -18,7 +18,7 @@ const store = {
   },
   actions: {
     initMenu: {
-      handler: function({  dispatch }) {
+      handler: function({ dispatch }) {
         dispatch("getMenu");
       },
       root: true,
@@ -29,7 +29,8 @@ const store = {
       fetch(`https://bella-italiano.herokuapp.com/api/v1/${path}`)
         .then((data) => data.json())
         .then((res) => res.data)
-        .then((menu) => commit("SET_MENU", menu));
+        .then((menu) => commit("SET_MENU", menu))
+        .catch((error) => console.log(error));
 
       commit("SET_MENU_SECTION", foodType);
     },
