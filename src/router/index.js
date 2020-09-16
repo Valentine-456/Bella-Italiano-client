@@ -6,15 +6,6 @@ import About from "../views/About.vue";
 import News from "../views/News.vue";
 import Delivery from "../views/Delivery.vue";
 
-//!! For implementing duplicate redirections
-// const originalPush = VueRouter.prototype.push;
-// VueRouter.prototype.push = function push(location) {
-//   return originalPush.call(this, location).catch((err) => {
-//     if (err.name !== "NavigationDuplicated") throw err;
-//   });
-// };
-//!!
-
 Vue.use(VueRouter);
 
 const routes = [

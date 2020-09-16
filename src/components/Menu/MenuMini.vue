@@ -56,6 +56,17 @@
               <img src="/gallery/seafood.svg" />
             </b-button>
           </b-row>
+          <b-row>
+            <b-button
+              class="menu-mini-section"
+              variant="warning"
+              @click=" chooseMenu('soft-drinks', hide)"
+              size="lg"
+            >
+              Soft Drinks
+              <img src="/gallery/softDrink.svg" />
+            </b-button>
+          </b-row>
         </div>
       </template>
     </b-sidebar>

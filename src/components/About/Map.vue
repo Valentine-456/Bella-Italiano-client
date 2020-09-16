@@ -22,39 +22,39 @@ export default {
         scrollZoom: false
       });
 
-      const bounds = new mapboxgl.LngLatBounds();
+      setTimeout(() => {
+        const bounds = new mapboxgl.LngLatBounds();
 
-      this.geolocations.forEach((loc, index) => {
-        // Creates a marker
-        const el = document.createElement("div");
-        el.className = "marker";
-        el.style.width = "50px";
-        el.style.height = "50px";
-        el.style.backgroundImage =
-          "url('/gallery/mapPin.svg')";
-        el.style.backgroundSize = "cover";
+        this.geolocations.forEach((loc, index) => {
+          // Creates a marker
+          const el = document.createElement("div");
+          el.className = "marker";
+          el.style.width = "50px";
+          el.style.height = "50px";
+          el.style.backgroundImage = "url('/gallery/mapPin.svg')";
+          el.style.backgroundSize = "cover";
 
-        // Adds a marker
-        new mapboxgl.Marker({
-          element: el,
-          anchor: "bottom"
-        })
-          .setLngLat(loc)
-          .addTo(map);
+          // Adds a marker
+          new mapboxgl.Marker({
+            element: el,
+            anchor: "bottom"
+          })
+            .setLngLat(loc)
+            .addTo(map);
 
-        // Adds popup
-        new mapboxgl.Popup({
-          offset: 30
-        })
-          .setLngLat(loc)
-          .setHTML(`<p>${this.addresses[index]}</p>`)
-          .addTo(map);
+          // Adds popup
+          new mapboxgl.Popup({
+            offset: 30
+          })
+            .setLngLat(loc)
+            .setHTML(`<p>${this.addresses[index]}</p>`)
+            .addTo(map);
 
-        // Extends bounds of the map
-        bounds.extend(loc);
-      });
+          // Extends bounds of the map
+          bounds.extend(loc);
+        });
 
-      try {
+        // try {
         map.fitBounds(bounds, {
           padding: {
             top: 120,
@@ -63,9 +63,10 @@ export default {
             right: 80
           }
         });
-      } catch (error) {
-        setTimeout(() => this.initMap());
-      }
+        // } catch (error) {
+        //   setTimeout(() => this.initMap());
+        // }
+      }, 120);
     }
   },
   mounted: function() {

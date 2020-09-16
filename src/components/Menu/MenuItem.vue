@@ -81,9 +81,14 @@ export default {
 </script>
 
 <style scoped>
+.card-deck > div {
+  margin: auto;
+}
+
 .menu-item {
   width: 20rem;
   min-height: 40vh;
+  margin: auto;
 }
 .card-img-top {
   position: relative;
@@ -105,7 +110,6 @@ export default {
   position: absolute;
   top: 10px;
   left: 10px;
-  z-index: 1000;
 }
 .sticker {
   width: 70px;
@@ -113,7 +117,6 @@ export default {
   border-radius: 10px;
   background-size: contain;
   margin-bottom: 10px;
-  /* border: 3px solid #343A40; */
 }
 
 .sticker-red {
@@ -143,13 +146,7 @@ export default {
   margin-bottom: 30px;
 }
 
-@media screen and(max-width: 900px) {
-  .menu-item {
-    width: 34%;
-    min-height: 40vh;
-  }
-}
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 800px) {
   .menu-item {
     width: 16rem;
   }

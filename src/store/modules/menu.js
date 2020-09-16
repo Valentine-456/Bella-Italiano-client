@@ -24,7 +24,8 @@ const store = {
       root: true,
     },
     getMenu({ commit }, foodType = "wines") {
-      let path = foodType === "wines" ? `wines` : `dishes/category/${foodType}`;
+      let path = `dishes/category/${foodType}`;
+      if (foodType === "wines" || foodType === "soft-drinks") path = foodType;
 
       fetch(`https://bella-italiano.herokuapp.com/api/v1/${path}`)
         .then((data) => data.json())

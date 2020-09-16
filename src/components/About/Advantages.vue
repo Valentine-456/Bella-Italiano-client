@@ -81,14 +81,11 @@ export default {
 
 @media screen and (max-width: 700px) {
   .image {
-    background-size: cover;
-    width: 100%;
     height: 200px;
-    background-repeat: no-repeat;
   }
 
   h3 {
-    font-size: 1.25em;
+    font-size: 1em;
     font-family: "Italiana", sans-serif;
   }
 }
