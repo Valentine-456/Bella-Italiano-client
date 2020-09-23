@@ -28,5 +28,20 @@ export default {
   background-size: 80% 80%;
   background-position: center;
   background-repeat: no-repeat;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 50px rgba(rgb(255,193,7), 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(rgb(255,193,7), 0);
+  }
 }
 </style>

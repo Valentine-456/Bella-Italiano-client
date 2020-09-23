@@ -7,19 +7,20 @@
       img-top
       tag="article"
       class="mb-2 menu-item"
+      @mouseleave="closeDescription"
     >
-      <!-- <b-tooltip target="MenuItem" triggers="hover"> -->
-      <!-- <slot></slot> -->
-      <!-- </b-tooltip> -->
       <div class="card-img-top">
         <div v-if="colorSticker || typeSticker" class="card-stickers">
           <div v-if="colorSticker" :class="[colorSticker, 'sticker']"></div>
           <div v-if="typeSticker" :class="[typeSticker, 'sticker']"></div>
         </div>
         <div class="img" :style="photoBackground"></div>
+        <div class="description hidden">
+          <p>{{description}}</p>
+        </div>
       </div>
       <h4 class="card-title">{{title}}</h4>
-      <b-button class="price-button" pill href="#" variant="warning">
+      <b-button class="price-button" pill href="#" variant="warning" @click="openDescription">
         {{
         priceInCurrency
         }}
@@ -50,6 +51,9 @@ export default {
     },
     type: {
       type: String
+    },
+    description: {
+      type: String
     }
   },
   computed: {
@@ -75,6 +79,20 @@ export default {
       if (this.type === "sparkling") return `sticker-sparkling`;
       // "../../assets/seafood.svg"
       return "";
+    }
+  },
+  methods: {
+    openDescription: function(event) {
+      const descriptionBlock = event.currentTarget.parentElement.querySelector(
+        ".card-img-top  .description"
+      );
+      descriptionBlock.classList.toggle("hidden");
+    },
+    closeDescription: function(event) {
+      const descriptionBlock = event.currentTarget.querySelector(
+        ".card-img-top  .description"
+      );
+      descriptionBlock.classList.add("hidden");
     }
   }
 };
@@ -144,6 +162,30 @@ export default {
 
 .price-button {
   margin-bottom: 30px;
+}
+
+.description {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgb(255, 193, 7);
+  color: rgb(52, 58, 64);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  transition: 0.6s;
+}
+
+.description p {
+  font-size: 1rem;
+  padding: 0 5px;
+  text-align: left;
+  overflow: auto;
+}
+
+.hidden {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
 @media screen and (max-width: 800px) {

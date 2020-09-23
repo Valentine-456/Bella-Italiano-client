@@ -4,6 +4,7 @@
       v-for="(item, index) in news"
       :key="index + 1"
       class="news"
+      :style="createCSSRule(item.photo)"
       @click="toggleDescription($event)"
     >
       <h3>{{item.title}}</h3>
@@ -24,7 +25,8 @@ export default {
     toggleDescription: function(event) {
       const description = event.currentTarget.querySelector(".description");
       description.classList.toggle("hidden");
-    }
+    },
+    createCSSRule: url => `background-image: url('${url}');`
   }
 };
 </script>
@@ -47,10 +49,13 @@ export default {
 .news {
   transition: 0.6s all ease;
   position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .news h3 {
   margin-top: 10%;
   font-size: 1.3rem;
+  background-color: inherit;
 }
 
 .news:nth-of-type(2n) {

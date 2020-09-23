@@ -10,6 +10,7 @@
         :img="dish.photo"
         :color="dish.color"
         :type="dish.type"
+        :description="dish.description"
       ></MenuItem>
     </b-card-group>
   </div>

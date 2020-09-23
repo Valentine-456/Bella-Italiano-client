@@ -3,6 +3,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+var mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
 
 export default {
   name: "Map",
@@ -11,15 +12,15 @@ export default {
   },
   methods: {
     initMap: function() {
-      var mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
-
       mapboxgl.accessToken =
         "pk.eyJ1IjoidmFsZW50aW5lLTQ1NiIsImEiOiJja2RoNW82YnIyc3k3MnNrNmR2ZGxrd2NnIn0.HzMMj_gjqm349h5PE9RIjw";
       const map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         center: [30.531, 50.452],
-        scrollZoom: false
+        doubleClickZoom: false,
+        minZoom: 10,
+        maxZoom: 18
       });
 
       setTimeout(() => {
@@ -33,6 +34,13 @@ export default {
           el.style.height = "50px";
           el.style.backgroundImage = "url('/gallery/mapPin.svg')";
           el.style.backgroundSize = "cover";
+          //creates popup then binds it to marker
+
+          const popup = new mapboxgl.Popup({
+            offset: 30
+          })
+            .setLngLat(loc)
+            .setHTML(`<p>${this.addresses[index]}</p>`);
 
           // Adds a marker
           new mapboxgl.Marker({
@@ -40,33 +48,22 @@ export default {
             anchor: "bottom"
           })
             .setLngLat(loc)
-            .addTo(map);
-
-          // Adds popup
-          new mapboxgl.Popup({
-            offset: 30
-          })
-            .setLngLat(loc)
-            .setHTML(`<p>${this.addresses[index]}</p>`)
+            .setPopup(popup)
             .addTo(map);
 
           // Extends bounds of the map
           bounds.extend(loc);
         });
 
-        // try {
-        map.fitBounds(bounds, {
-          padding: {
-            top: 120,
-            bottom: 80,
-            left: 80,
-            right: 80
-          }
-        });
-        // } catch (error) {
-        //   setTimeout(() => this.initMap());
-        // }
-      }, 120);
+        // map.fitBounds(bounds, {
+        //   padding: {
+        //     top: 120,
+        //     bottom: 80,
+        //     left: 80,
+        //     right: 80
+        //   }
+        // });
+      },);
     }
   },
   mounted: function() {
